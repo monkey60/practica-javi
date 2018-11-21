@@ -32,8 +32,16 @@ public class moneco : MonoBehaviour
     private void MouseMovement1()
     {
 
-        gameObject.transform.position = Vector2.MoveTowards(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), 0.5f);
+        transform.position = Vector2.MoveTowards(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), 10 * Time.deltaTime);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Magnético")) {
+            collision.transform.parent = transform;
+        } 
+    }
+
 }
 
 
